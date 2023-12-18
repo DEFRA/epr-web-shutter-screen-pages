@@ -1,0 +1,40 @@
+trigger:
+  branches:
+    include:
+      - '*'
+  paths:
+    include:
+      - 'ShutterPage/src'
+
+parameters:
+
+- name: envToDeploy
+  displayName: Target env to deploy
+  default: development
+  type: string
+  values:
+    - development
+    - test
+    - preprod
+    - prod
+
+pool: DEFRA-COMMON-ubuntu2004-SSV3
+
+variables:
+  - template: vars/${{ parameters.envToDeploy }}.yaml
+
+resources:
+  repositories:
+    - repository: CommonTemplates
+      name: RWD-CPR-EPR4P-ADO/epr-webapps-code-deploy-templates
+      type: git
+      ref: main
+
+jobs:
+  - job: copying_ShutterPage
+    displayName: Copying Shutter page to ${{ parameters.envToDeploy }}
+    steps:
+      - template: templates/shutter-page.yaml@CommonTemplates
+        parameters:
+          azureSubscription: $(azureSubscription)
+          storage: $(storage)

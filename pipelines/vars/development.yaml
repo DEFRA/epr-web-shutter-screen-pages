@@ -1,0 +1,3 @@
+variables:
+  azureSubscription: 'AZD-RWD-DEV1'
+  storage: 'devrwddbssa1402'

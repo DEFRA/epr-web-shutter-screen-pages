@@ -1,0 +1,16 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/.idea.epr-web-shutter-screen-pages.iml
+/projectSettingsUpdater.xml
+/modules.xml
+/indexLayout.xml
+vcs.xml
+misc.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
