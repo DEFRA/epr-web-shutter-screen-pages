@@ -1,3 +1,3 @@
 variables:
   azureSubscription: 'AZR-RWD-PRE1'
-  storage: 'prerwdwebsa1401'
+  storage: 'prerwddbssa1402'
