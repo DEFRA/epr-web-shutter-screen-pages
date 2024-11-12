@@ -1,3 +1,4 @@
+[CmdletBinding()]
 param (
     [Parameter(Mandatory = $true)] [string] $gatewayServiceConnection,
     [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
