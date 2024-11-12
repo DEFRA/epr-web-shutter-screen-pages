@@ -51,6 +51,6 @@ jobs:
         displayName: reset Application Gateway
         inputs:
           azureSubscription: '$(application_gateway_service_Connection)'
-          targetType: filePath
-          filePath:  pipelines/powershell/resetApplicationGatewayCustomeError.ps1
-          arguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
+          scriptType: filePath
+          scriptPath:  pipelines/powershell/resetApplicationGatewayCustomeError.ps1
+          scriptArguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
