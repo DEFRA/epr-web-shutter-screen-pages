@@ -22,6 +22,12 @@ pool: DEFRA-COMMON-ubuntu2004-SSV3
 
 variables:
   - template: vars/${{ parameters.envToDeploy }}.yaml
+  - name: application_gateway_service_Connection
+    value: 365-CSC-SEC1_RWD-DEV
+  - name: application_gateway_rg
+    value: SECINFNETRG1401
+
+
 
 resources:
   repositories:
@@ -38,3 +44,12 @@ jobs:
         parameters:
           azureSubscription: $(azureSubscription)
           storage: $(storage)
+  
+  - job: reset application gateway    
+    steps:
+      - task: PowerShell@2
+        displayName: reset Application Gateway
+        input:
+          targetType: filePath
+          filePath:  'powershell\resetApplicationGatewayCustomeError.ps1'
+          arguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
