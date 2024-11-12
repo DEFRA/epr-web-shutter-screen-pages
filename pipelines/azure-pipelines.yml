@@ -47,7 +47,7 @@ jobs:
   
   - job: reset_Application_Gateway
     steps:
-      - task: PowerShell@2
+      - task: AzurePowerShell@5
         displayName: reset Application Gateway
         inputs:
           targetType: filePath
