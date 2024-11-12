@@ -45,7 +45,7 @@ jobs:
           azureSubscription: $(azureSubscription)
           storage: $(storage)
   
-  - job: reset application gateway    
+  - job: reset_Application_Gateway
     steps:
       - task: PowerShell@2
         displayName: reset Application Gateway
