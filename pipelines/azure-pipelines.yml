@@ -51,5 +51,5 @@ jobs:
         displayName: reset Application Gateway
         inputs:
           targetType: filePath
-          filePath:  'powershell\resetApplicationGatewayCustomeError.ps1'
+          filePath:  'powershell/resetApplicationGatewayCustomeError.ps1'
           arguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
