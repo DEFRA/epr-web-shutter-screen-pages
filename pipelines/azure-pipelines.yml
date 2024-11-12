@@ -47,10 +47,10 @@ jobs:
   
   - job: reset_Application_Gateway
     steps:
-      - task: AzurePowerShell@5
-        azureSubscription: '$(application_gateway_service_Connection)'
+      - task: AzurePowerShell@5        
         displayName: reset Application Gateway
         inputs:
+          azureSubscription: '$(application_gateway_service_Connection)'
           targetType: filePath
           filePath:  pipelines/powershell/resetApplicationGatewayCustomeError.ps1
           arguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
