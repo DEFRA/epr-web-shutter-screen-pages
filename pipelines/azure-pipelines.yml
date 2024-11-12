@@ -48,6 +48,7 @@ jobs:
   - job: reset_Application_Gateway
     steps:
       - task: AzurePowerShell@5
+        azureSubscription: '$(application_gateway_service_Connection)'
         displayName: reset Application Gateway
         inputs:
           targetType: filePath
