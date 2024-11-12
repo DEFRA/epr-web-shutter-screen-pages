@@ -49,7 +49,7 @@ jobs:
     steps:
       - task: PowerShell@2
         displayName: reset Application Gateway
-        input:
+        inputs:
           targetType: filePath
           filePath:  'powershell\resetApplicationGatewayCustomeError.ps1'
           arguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
