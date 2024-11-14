@@ -15,3 +15,4 @@ get-azResourceGroup
 # $gatewayServiceConnection
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
 Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
+Get-AzApplicationGatewayAvailableWafRuleSet
