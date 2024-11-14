@@ -23,4 +23,4 @@ Get-AzApplicationGateway -ResourceGroupName $applicationGatewayRg
 
 #Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
 
- Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
+ #Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
