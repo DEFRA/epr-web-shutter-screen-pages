@@ -27,7 +27,11 @@ Write-Host "----"
 
 #Get-AzApplicationGatewayCustomError -ApplicationGateway $AppGw #-StatusCode HttpStatus502
 #Get-AzApplicationGatewayListener -Name "Listener01" -ApplicationGateway $Appgw
-Get-AzApplicationGatewayListener -ApplicationGateway $AppGw
+$Listeners = Get-AzApplicationGatewayListener -ApplicationGateway $AppGw
+
+Write-Host "----"
+Write-output $Listeners
+Write-Host "----"
 #Stop-AzApplicationGateway -ApplicationGateway $AppGw
 
  #Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
