@@ -26,6 +26,7 @@ variables:
     value: 365-CSC-SEC1_RWD-DEV
   - name: application_gateway_rg
     value: SECINFNETRG1401
+  
 
 
 
