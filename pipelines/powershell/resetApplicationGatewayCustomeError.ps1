@@ -18,7 +18,7 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 #Get-AzApplicationGatewayAvailableWafRuleSet
 Get-AzApplicationGateway
 
-$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
+#$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
 #$Settings  = Get-AzApplicationGatewayBackendSetting -Name "Settings01" -ApplicationGateway $AppGw
 
-Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
+#Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
