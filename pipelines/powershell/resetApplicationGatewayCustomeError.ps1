@@ -1,8 +1,8 @@
-# [CmdletBinding()]
-# param (
-#     [Parameter(Mandatory = $true)] [string] $gatewayServiceConnection,
-#     [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
-# )
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory = $true)] [string] $gatewayServiceConnection,
+    [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
+)
 
 # Write-Host "gateway Service  Connection $($gatewayServiceConnection)" 
 # Write-Host "application Gateway Rg $($applicationGatewayRg)" 
@@ -17,3 +17,8 @@
 #Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 #Get-AzApplicationGatewayAvailableWafRuleSet
 Get-AzApplicationGateway
+
+$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
+#$Settings  = Get-AzApplicationGatewayBackendSetting -Name "Settings01" -ApplicationGateway $AppGw
+
+Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
