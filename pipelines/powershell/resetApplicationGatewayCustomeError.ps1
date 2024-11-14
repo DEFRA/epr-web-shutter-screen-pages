@@ -16,7 +16,7 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
 #Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 #Get-AzApplicationGatewayAvailableWafRuleSet
-$AppGw =Get-AzApplicationGateway -ResourceGroupName $applicationGatewayRg
+$AppGw =Get-AzApplicationGateway -Name "SECADPSNDAG1401" -ResourceGroupName $applicationGatewayRg
 
 Write-Host "----"
 Write-Host $AppGw
