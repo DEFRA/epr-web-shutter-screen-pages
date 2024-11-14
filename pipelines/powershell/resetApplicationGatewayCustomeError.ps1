@@ -19,7 +19,7 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 $AppGw =Get-AzApplicationGateway #-Name "SECADPSNDAG1401" -ResourceGroupName $applicationGatewayRg
 
 Write-Host "----"
-Write-Host $AppGw
+Write-output $AppGw
 Write-Host "----"
 
 #$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
