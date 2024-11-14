@@ -32,7 +32,7 @@ $Listeners = Get-AzApplicationGatewayListener -ApplicationGateway $AppGw
 Write-Host "----"
 Write-output $Listeners
 Write-Host "----"
-Stop-AzApplicationGateway -ApplicationGateway $AppGw
-Start-AzApplicationGateway -ApplicationGateway $AppGw
+#Stop-AzApplicationGateway -ApplicationGateway $AppGw
+#Start-AzApplicationGateway -ApplicationGateway $AppGw
 
  #Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
