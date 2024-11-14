@@ -16,9 +16,11 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
 #Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 #Get-AzApplicationGatewayAvailableWafRuleSet
-Get-AzApplicationGateway
+Get-AzApplicationGateway -ResourceGroupName $applicationGatewayRg
 
 #$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
 #$Settings  = Get-AzApplicationGatewayBackendSetting -Name "Settings01" -ApplicationGateway $AppGw
 
 #Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
+
+ Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
