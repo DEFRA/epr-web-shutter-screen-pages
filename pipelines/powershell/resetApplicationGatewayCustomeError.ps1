@@ -25,6 +25,6 @@ Write-Host "----"
 #$AppGw = Get-AzApplicationGateway -Name $applicationGatewayRg -ResourceGroupName $applicationGatewayRg
 #$Settings  = Get-AzApplicationGatewayBackendSetting -Name "Settings01" -ApplicationGateway $AppGw
 
-#Get-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502
+Get-AzApplicationGatewayCustomError -ApplicationGateway $AppGw -StatusCode HttpStatus502
 
  #Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
