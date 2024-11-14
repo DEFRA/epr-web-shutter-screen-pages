@@ -10,9 +10,10 @@
 #Get-AzContext
 #Set-AzContext "5ac20727-8367-4439-81c1-1ba4c030ecb0" #$gatewayServiceConnection
 
-get-azResourceGroup
+#get-azResourceGroup
 #
 # $gatewayServiceConnection
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
-Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
-Get-AzApplicationGatewayAvailableWafRuleSet
+#Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
+#Get-AzApplicationGatewayAvailableWafRuleSet
+Get-AzApplicationGateway
