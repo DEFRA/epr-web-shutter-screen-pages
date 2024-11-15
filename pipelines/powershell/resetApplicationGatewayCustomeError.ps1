@@ -16,7 +16,7 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
 #Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 #Get-AzApplicationGatewayAvailableWafRuleSet
-$AppGw =Get-AzApplicationGateway  #-Name "SECADPSNDAG1401" -ResourceGroupName "SECADPSNDRG1401"
+$AppGw =Get-AzApplicationGateway -Name "SECADPSNDAG1401" -ResourceGroupName "SECADPSNDRG1401"
 
 Write-Host "----"
 Write-output $AppGw
@@ -32,7 +32,7 @@ Write-Host "----"
 Write-Host "----"
 #Write-output $Listeners
 Write-Host "----"
-#Stop-AzApplicationGateway -ApplicationGateway $AppGw
-#Start-AzApplicationGateway -ApplicationGateway $AppGw
+Stop-AzApplicationGateway -ApplicationGateway $AppGw
+Start-AzApplicationGateway -ApplicationGateway $AppGw
 
  #Get-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGW
