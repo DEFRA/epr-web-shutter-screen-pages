@@ -28,9 +28,6 @@ variables:
     value: SECADPSNDRG1401
   - name: application_gateway_name
     value: SECADPSNDAG1401
-  
-
-
 
 resources:
   repositories:
