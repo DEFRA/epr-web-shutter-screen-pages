@@ -49,6 +49,7 @@ jobs:
           storage: $(storage)
   
   - job: reset_Application_Gateway
+    condition: eq(${{ parameters.envToDeploy }},development)
     steps:
       - task: AzurePowerShell@5        
         displayName: reset Application Gateway
