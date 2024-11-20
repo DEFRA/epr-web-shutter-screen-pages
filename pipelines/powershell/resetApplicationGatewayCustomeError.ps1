@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param (
-    [Parameter(Mandatory = $true)] [string] $gatewayServiceConnection,
+    [Parameter(Mandatory = $true)] [string] $gatewayName,
     [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
 )
 
@@ -16,8 +16,9 @@ Write-Host "application Gateway Rg $($applicationGatewayRg)"
 #get-azapplicationGatewayCustomError -ApplicationGateway "SECRWDDEVAG9401"
 #Get-AzApplicationGatewayAvailableServerVariableAndHeader -ServerVariable
 #Get-AzApplicationGatewayAvailableWafRuleSet
-$AppGw =Get-AzApplicationGateway -Name "SECADPSNDAG1401" -ResourceGroupName "SECADPSNDRG1401"
+#$AppGw =Get-AzApplicationGateway -Name "SECADPSNDAG1401" -ResourceGroupName "SECADPSNDRG1401"
 
+$AppGw =Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName  $applicationGatewayRg
 Write-Host "----"
 Write-output $AppGw
 Write-Host "----"

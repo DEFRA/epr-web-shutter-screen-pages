@@ -25,9 +25,9 @@ variables:
   - name: application_gateway_service_Connection
     value: 365-CSC-SEC1_RWD-DEV
   - name: application_gateway_rg
-    value: SECRWDDEVRG9401
+    value: SECADPSNDRG1401
   - name: application_gateway_name
-    value: SECRWDDEVAG9401
+    value: SECADPSNDAG1401
   
 
 
@@ -56,6 +56,6 @@ jobs:
           azureSubscription: '$(application_gateway_service_Connection)'
           scriptType: filePath
           scriptPath:  pipelines/powershell/resetApplicationGatewayCustomeError.ps1
-          scriptArguments: -gatewayServiceConnection $(application_gateway_service_Connection) -applicationGatewayRg $(application_gateway_rg) 
+          scriptArguments: -gatewayName $(application_gateway_name) -applicationGatewayRg $(application_gateway_rg) 
           azurePowerShellVersion: latestVersion
           pwsh: true
