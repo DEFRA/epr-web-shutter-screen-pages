@@ -22,12 +22,7 @@ pool: DEFRA-COMMON-ubuntu2004-SSV3
 
 variables:
   - template: vars/${{ parameters.envToDeploy }}.yaml
-  - name: application_gateway_service_Connection
-    value: 365-CSC-SEC1_RWD-DEV
-  - name: application_gateway_rg
-    value: SECADPSNDRG1401
-  - name: application_gateway_name
-    value: SECADPSNDAG1401
+  
 
 resources:
   repositories:
