@@ -1,6 +1,6 @@
 variables:
-  azureSubscription: 'AZD-RWD-DEV9'
+  azureSubscription: 'AZD-RWD-DEV1'
   storage: 'devrwddbssa1402'
   application_gateway_service_Connection: '365-CSC-SEC1_RWD-DEV'
-  application_gateway_rg: 'SECRWDDEVRG9401'
-  application_gateway_name: 'SECRWDDEVAG9401'
+  application_gateway_rg: 'SECRWDDEVRG1401'
+  application_gateway_name: 'SECRWDDEVAG1401'
