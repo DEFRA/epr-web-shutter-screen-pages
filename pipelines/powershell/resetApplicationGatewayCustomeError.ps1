@@ -14,6 +14,8 @@ Write-output $AppGw
 
 $SettingsList  = Get-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw
 
+Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $AppGw -RequestTimeout 40
+
 Write-output $SettingsList
  ##Stop-AzApplicationGateway -ApplicationGateway $AppGw
  ##Start-AzApplicationGateway -ApplicationGateway $AppGw
