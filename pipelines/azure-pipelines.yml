@@ -42,7 +42,7 @@ jobs:
   
   - job: reset_Application_Gateway
     condition: ${{eq(parameters.envToDeploy,'development')}}
-    dependOn: copying_ShutterPage
+    dependsOn: copying_ShutterPage
     steps:
       - task: AzurePowerShell@5        
         displayName: reset Application Gateway
