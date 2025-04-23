@@ -1,15 +1,87 @@
+# [CmdletBinding()]
+# param (
+#     [Parameter(Mandatory = $true)] [string] $gatewayName,
+#     [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
+# )
+
+# Write-Host "gateway Service  Connection $($gatewayServiceConnection)" 
+# Write-Host "application Gateway Rg $($applicationGatewayRg)" 
+
+# $AppGw =Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName  $applicationGatewayRg
+# Write-output $AppGw
+
+# Stop-AzApplicationGateway -ApplicationGateway $AppGw
+# Start-AzApplicationGateway -ApplicationGateway $AppGw
+
 [CmdletBinding()]
 param (
     [Parameter(Mandatory = $true)] [string] $gatewayName,
-    [Parameter(Mandatory =$true)] [string] $applicationGatewayRg
+    [Parameter(Mandatory = $true)] [string] $applicationGatewayRg,
+    [Parameter(Mandatory = $false)] [int] $waitTimeSeconds = 5
 )
 
-Write-Host "gateway Service  Connection $($gatewayServiceConnection)" 
-Write-Host "application Gateway Rg $($applicationGatewayRg)" 
+function Update-FrontendPort {
+    param (
+        [Microsoft.Azure.Commands.Network.Models.PSApplicationGateway] $appGw,
+        [int] $fromPort,
+        [int] $toPort
+    )
 
-$AppGw =Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName  $applicationGatewayRg
-Write-output $AppGw
+    $frontendPort = $appGw.FrontendPorts | Where-Object { $_.Port -eq $fromPort }
+    if ($frontendPort) {
+        $frontendPort.Port = $toPort
+        Write-Host "Updated Frontend Port from $fromPort to $toPort..." -ForegroundColor Yellow
+        Set-AzApplicationGateway -ApplicationGateway $appGw
+        Start-Sleep -Seconds $waitTimeSeconds # wait briefly for Azure to process the update
+    } else {
+        Write-Host "Frontend Port $fromPort not found." -ForegroundColor Red
+        throw "Frontend Port $fromPort not found"
+    }
+}
 
-Stop-AzApplicationGateway -ApplicationGateway $AppGw
-Start-AzApplicationGateway -ApplicationGateway $AppGw
- 
+try {
+    Write-Host "Fetching Application Gateway: $gatewayName in Resource Group: $applicationGatewayRg" -ForegroundColor Green
+    $AppGw = Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg -ErrorAction Stop
+
+    if (-not $AppGw) {
+        Write-Host "Application Gateway '$gatewayName' not found in Resource Group '$applicationGatewayRg'." -ForegroundColor Red
+        exit 1
+    }
+
+    # Stop the gateway
+    Write-Host "Stopping Application Gateway..." -ForegroundColor Yellow
+    Stop-AzApplicationGateway -ApplicationGateway $AppGw -Force
+
+    # Wait for gateway to fully stop
+    $retryCount = 0
+    $maxRetries = 6
+    while ($retryCount -lt $maxRetries) {
+        $status = (Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg).ProvisioningState
+        if ($status -eq "Stopped") {
+            break
+        }
+        Write-Host "Waiting for gateway to stop... (Attempt $($retryCount + 1)/$maxRetries)" -ForegroundColor Yellow
+        Start-Sleep -Seconds 10
+        $retryCount++
+    }
+
+    if ($retryCount -eq $maxRetries) {
+        throw "Gateway failed to stop within the expected time"
+    }
+
+    # Temporarily change frontend port from 443 → 445
+    Update-FrontendPort -AppGw $AppGw -fromPort 443 -toPort 445
+
+    # Change frontend port back from 445 → 443
+    Update-FrontendPort -AppGw $AppGw -fromPort 445 -toPort 443
+
+    # Start the gateway again
+    Write-Host "Starting Application Gateway..." -ForegroundColor Green
+    Start-AzApplicationGateway -ApplicationGateway $AppGw
+
+    Write-Host "Application Gateway flushed and restarted successfully!" -ForegroundColor Green
+}
+catch {
+    Write-Host "An error occurred: $_" -ForegroundColor Red
+    exit 1
+}
