@@ -41,7 +41,7 @@ jobs:
           storage: $(storage)
   
   - job: reset_Application_Gateway
-    condition: ${{eq(parameters.envToDeploy,'development')}, ${{eq(parameters.envToDeploy,'test')}, ${{eq(parameters.envToDeploy,'preprod')}, ${{eq(parameters.envToDeploy,'prod')}}
+    condition: ${{eq(parameters.envToDeploy,'development', true), eq(parameters.envToDeploy,'test'), eq(parameters.envToDeploy,'preprod'), eq(parameters.envToDeploy,'prod')}}
     dependsOn: copying_ShutterPage
     steps:
       - task: AzurePowerShell@5
