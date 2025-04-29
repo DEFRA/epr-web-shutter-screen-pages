@@ -1,6 +1,6 @@
 variables:
   azureSubscription: 'AZR-RWD-PRE1'
   storage: 'prerwddbssa1402'
-  application_gateway_service_Connection: '365-CSC-SEC1_RWD-PRE'
+  application_gateway_service_Connection: 'AZR-CSC-SEC1_RWD-PRE'
   application_gateway_rg: 'SECRWDPRERG1401'
   application_gateway_name: 'SECRWDPREAG1401'

@@ -1,6 +1,6 @@
 variables:
   azureSubscription: 'AZR-RWD-PRD1'
   storage: 'prdrwddbssa1402'
-  application_gateway_service_Connection: '365-CSC-SEC1_RWD-PRD'
+  application_gateway_service_Connection: 'AZR-CSC-SEC1_RWD-PRD'
   application_gateway_rg: 'SECRWDPRDRG1401'
   application_gateway_name: 'SECRWDPRDAG1401'
