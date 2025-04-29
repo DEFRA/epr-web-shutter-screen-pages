@@ -40,10 +40,6 @@ try {
         throw "Application Gateway '$gatewayName' not found in Resource Group '$applicationGatewayRg'"
     }
 
-    # Change frontend port from original to temporary port
-    Update-FrontendPort -AppGw $appGw -fromPort $fromPort -toPort $toPort
-    Write-Host "Updating Frontend Port from $fromPort to $toPort..." -ForegroundColor Green
-
     # Change frontend port back to original port
     Update-FrontendPort -AppGw $appGw -fromPort $toPort -toPort $fromPort
     Write-Host "Updating Frontend Port from $toPort to $fromPort..." -ForegroundColor Green
