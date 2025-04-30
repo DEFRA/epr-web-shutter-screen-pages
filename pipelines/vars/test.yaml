@@ -1,3 +1,6 @@
 variables:
   azureSubscription: 'AZD-RWD-TST1'
   storage: 'tstrwddbssa1402'
+  application_gateway_service_Connection: '365-CSC-SEC1_RWD-TST'
+  application_gateway_rg: 'SECRWDTSTRG1401'
+  application_gateway_name: 'SECRWDTSTAG1401'
