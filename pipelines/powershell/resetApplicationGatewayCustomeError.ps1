@@ -34,15 +34,17 @@ function Update-FrontendPort {
 
 try {
     Write-Host "Fetching Application Gateway: $gatewayName in Resource Group: $applicationGatewayRg" -ForegroundColor Green
+    Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg -ErrorAction Stop
     $appGw = Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg -ErrorAction Stop
+    Write-Host "Application Gateway: $appGw"
 
     if (-not $appGw) {
         throw "Application Gateway '$gatewayName' not found in Resource Group '$applicationGatewayRg'"
     }
 
     # Change frontend port back to original port
-    Update-FrontendPort -AppGw $appGw -fromPort $toPort -toPort $fromPort
     Write-Host "Updating Frontend Port from $toPort to $fromPort..." -ForegroundColor Green
+    Update-FrontendPort -AppGw $appGw -fromPort $toPort -toPort $fromPort
 
     Write-Host "Application Gateway cache flushed successfully!" -ForegroundColor Green
 }
