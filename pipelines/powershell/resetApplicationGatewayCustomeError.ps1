@@ -2,8 +2,8 @@
 param (
     [Parameter(Mandatory = $true)] [string] $gatewayName,
     [Parameter(Mandatory = $true)] [string] $applicationGatewayRg,
-    [Parameter(Mandatory = $false)] [int] $fromPort = 443,
-    [Parameter(Mandatory = $false)] [int] $toPort = 445,
+    [Parameter(Mandatory = $false)] [int] $realPort = 443,
+    [Parameter(Mandatory = $false)] [int] $tempPort = 445,
     [Parameter(Mandatory = $false)] [int] $waitTimeSeconds = 5
 )
 
@@ -42,9 +42,13 @@ try {
         throw "Application Gateway '$gatewayName' not found in Resource Group '$applicationGatewayRg'"
     }
 
-    # Change frontend port back to original port
-    Write-Host "Updating Frontend Port from $toPort to $fromPort..." -ForegroundColor Green
-    Update-FrontendPort -AppGw $appGw -fromPort $toPort -toPort $fromPort
+    # Change frontend port to real port to temp port
+    Write-Host "Updating Frontend Port from $realPort to $tempPort..." -ForegroundColor Green
+    Update-FrontendPort -AppGw $appGw -fromPort $realPort -toPort $tempPort
+
+    # Change frontend temp port back to real port
+    Write-Host "Updating Frontend Port from $tempPort to $realPort..." -ForegroundColor Green
+    Update-FrontendPort -AppGw $appGw -fromPort $tempPort -toPort $realPort
 
     Write-Host "Application Gateway cache flushed successfully!" -ForegroundColor Green
 }
