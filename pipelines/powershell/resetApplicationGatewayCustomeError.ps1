@@ -46,6 +46,9 @@ try {
     Write-Host "Updating Frontend Port from $realPort to $tempPort..." -ForegroundColor Green
     Update-FrontendPort -AppGw $appGw -fromPort $realPort -toPort $tempPort
 
+    Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg -ErrorAction Stop
+    $appGw = Get-AzApplicationGateway -Name $gatewayName -ResourceGroupName $applicationGatewayRg -ErrorAction Stop
+    Write-Host "Application Gateway: $appGw"
     # Change frontend temp port back to real port
     Write-Host "Updating Frontend Port from $tempPort to $realPort..." -ForegroundColor Green
     Update-FrontendPort -AppGw $appGw -fromPort $tempPort -toPort $realPort
