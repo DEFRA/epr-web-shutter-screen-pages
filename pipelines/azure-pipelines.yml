@@ -50,6 +50,6 @@ jobs:
   #         azureSubscription: '$(application_gateway_service_Connection)'
   #         scriptType: filePath
   #         scriptPath: pipelines/powershell/resetApplicationGatewayCustomeError.ps1
-          scriptArguments: -gatewayName $(application_gateway_name) -applicationGatewayRg $(application_gateway_rg)
-          azurePowerShellVersion: latestVersion
-          pwsh: true
+          # scriptArguments: -gatewayName $(application_gateway_name) -applicationGatewayRg $(application_gateway_rg)
+          # azurePowerShellVersion: latestVersion
+          # pwsh: true
