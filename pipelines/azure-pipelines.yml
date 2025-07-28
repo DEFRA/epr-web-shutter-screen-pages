@@ -40,16 +40,16 @@ jobs:
           azureSubscription: $(azureSubscription)
           storage: $(storage)
   
-  - job: reset_Application_Gateway
-    # condition: or(eq(parameters.envToDeploy,'development'), eq(parameters.envToDeploy,'test'), eq(parameters.envToDeploy,'preprod'), eq(parameters.envToDeploy,'prod'))
-    dependsOn: copying_ShutterPage
-    steps:
-      - task: AzurePowerShell@5
-        displayName: Reset Application Gateway
-        inputs:
-          azureSubscription: '$(application_gateway_service_Connection)'
-          scriptType: filePath
-          scriptPath: pipelines/powershell/resetApplicationGatewayCustomeError.ps1
-          scriptArguments: -gatewayName $(application_gateway_name) -applicationGatewayRg $(application_gateway_rg)
-          azurePowerShellVersion: latestVersion
-          pwsh: true
+  # - job: reset_Application_Gateway
+  #   # condition: or(eq(parameters.envToDeploy,'development'), eq(parameters.envToDeploy,'test'), eq(parameters.envToDeploy,'preprod'), eq(parameters.envToDeploy,'prod'))
+  #   dependsOn: copying_ShutterPage
+  #   steps:
+  #     - task: AzurePowerShell@5
+  #       displayName: Reset Application Gateway
+  #       inputs:
+  #         azureSubscription: '$(application_gateway_service_Connection)'
+  #         scriptType: filePath
+  #         scriptPath: pipelines/powershell/resetApplicationGatewayCustomeError.ps1
+  #         scriptArguments: -gatewayName $(application_gateway_name) -applicationGatewayRg $(application_gateway_rg)
+  #         azurePowerShellVersion: latestVersion
+  #         pwsh: true
