@@ -1,5 +1,7 @@
 variables:
-- group: ServiceConnection-PRD1
+- group: ServiceConnections
+- name: azureSubscription
+  value: $(ServiceConnectionPRD1)
 - name: storage
   value: 'prdrwddbssa1402'
 - name: application_gateway_service_Connection
