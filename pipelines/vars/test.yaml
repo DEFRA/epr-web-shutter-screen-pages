@@ -1,6 +1,12 @@
 variables:
-  azureSubscription: 'AZD-RWD-TST1'
-  storage: 'tstrwddbssa1402'
-  application_gateway_service_Connection: '365-CSC-SEC1_RWD-TST'
-  application_gateway_rg: 'SECRWDTSTRG1401'
-  application_gateway_name: 'SECRWDTSTAG1401'
+- group: ServiceConnections
+- name: azureSubscription
+  value: $(ServiceConnectionTST1)
+- name: storage
+  value: 'tstrwddbssa1402'
+- name: application_gateway_service_Connection
+  value: '365-CSC-SEC1_RWD-TST'
+- name: application_gateway_rg
+  value: 'SECRWDTSTRG1401'
+- name: application_gateway_name
+  value: 'SECRWDTSTAG1401'

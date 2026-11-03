@@ -1,6 +1,12 @@
 variables:
-  azureSubscription: 'AZR-RWD-PRE1'
-  storage: 'prerwddbssa1402'
-  application_gateway_service_Connection: 'AZR-CSC-SEC1_RWD-PRE'
-  application_gateway_rg: 'SECRWDPRERG1401'
-  application_gateway_name: 'SECRWDPREAG1401'
+- group: ServiceConnections
+- name: azureSubscription
+  value: $(ServiceConnectionPRE1)
+- name: storage
+  value: 'prerwddbssa1402'
+- name: application_gateway_service_Connection
+  value: 'AZR-CSC-SEC1_RWD-PRE'
+- name: application_gateway_rg
+  value: 'SECRWDPRERG1401'
+- name: application_gateway_name
+  value: 'SECRWDPREAG1401'
